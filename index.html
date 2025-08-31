@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Austin's Desktop</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+  <script src="script.js" defer></script>
+  <script src="https://kit.fontawesome.com/29c1e18d89.js" crossorigin="anonymous" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div id="iconGrid"></div>
+  <div id="Home" class="window">
+    <div class="topBar" onmousedown="startDrag(event, 'Home')">
+      <h3>Home</h3>
+      <div class="topBarX" onclick="closeWindow('Home')">(X)</div>
+    </div>
+    <div class="windowPage">
+      <h1 class="centeredText">Hey there, I'm Austin!</h1>
+      <br>
+      <p>I make cool projects.</p>
+      <p>Have fun exploring my desktop!</p>
+    </div>
+  </div>
+  <div id="About" class="window">
+    <div class="topBar" onmousedown="startDrag(event, 'About')">
+      <h3>About</h3>
+      <div class="topBarX" onclick="closeWindow('About')">(X)</div>
+    </div>
+    <div class="windowPage">
+      <h2 class="centeredText">It's your boy, Austin Isidoro-Rossini!</h2>
+      <img id="aboutImageRotation" class="centeredImage" src="assets/aboutImageRotate_3.png" title="Click Me!"
+        alt="If you see this you're missing out on the cool images." onclick="swapAboutImage()">
+      <br>
+      <p>I'm just a silly little buckaroo with a strong passion for learning and creating. I've been invested in
+        creating games and trinkets since 5th grade, and I'm always toying with new ideas. Over the years I've learned
+        to code in a variety of languages including JavaScript, C#, Java, and I've dabbled in plenty of others. To top it
+        all off, I enjoy creating videos, whether it be for school, work, or just for fun!</p>
+      <br>
+      <h3>What I do:</h3>
+      <div>
+        <div class="splitSection centeredText">
+          <div>
+            <img class="projectImage" src="assets/hobbies/coding.jpg">
+            <h3>Make games and applications</h3>
+          </div>
+          <div>
+            <img class="projectImage" src="assets/hobbies/videos.jpg">
+            <h3>Create decently good videos</h3>
+          </div>
+        </div>
+        <div class="splitSection centeredText">
+          <div>
+            <img class="projectImage" src="assets/hobbies/music.jpg">
+            <h3>Listen to music, country music go brrr</h3>
+          </div>
+          <div>
+            <img class="projectImage" src="assets/hobbies/tennis.JPEG">
+            <h3>Play sports, mostly tennis</h3>
+          </div>
+        </div>
+        <div class="splitSection centeredText">
+          <div>
+            <img class="projectImage" src="assets/hobbies/events.jpg">
+            <h3>Do fun events and competitions</h3>
+          </div>
+          <div>
+            <img class="projectImage" src="assets/hobbies/fools.jpg">
+            <h3>Hang out with the fools</h3>
+          </div>
+        </div>
+        <div class="splitSection centeredText">
+          <div>
+            <img class="projectImage" src="assets/hobbies/boating.jpg">
+            <h3>Have fun on the water</h3>
+          </div>
+          <div>
+            <img class="projectImage" src="assets/hobbies/coding.jpg">
+            <h3>Eat enough bagel bites to make the sun explode</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="Projects" class="window">
+    <div class="topBar" onmousedown="startDrag(event, 'Projects')">
+      <h3>Projects</h3>
+      <div class="topBarX" onclick="closeWindow('Projects')">(X)</div>
+    </div>
+    <div class="windowPage">
+      <h2 class="centeredText">Here are some of the cool things I've created!</h2>
+      <br>
+      <h2>Programming</h2>
+      <div>
+        <div class="splitSection codingProject">
+          <div>
+            <img class="projectImage" src="assets/projects/blooketLeaderboard.png" alt="Image of Blooket Leaderboards">
+          </div>
+          <div>
+            <h2>Blooket Leaderboards</h2>
+            <p>A website I created to let players of an educational game I used to play compare their in game statistics and to compete in various categories.</p>
+            <br>
+            <a href="https://blooket-leaderboards.pages.dev/" target="_blank">Visit Blooket Leaderboards!</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="splitSection codingProject">
+          <div>
+            <img class="projectImage" src="assets/projects/crystalClicker.png" alt="Image of Crystal Clicker">
+          </div>
+          <div>
+            <h2>Crystal Clicker</h2>
+            <p>A simple clicker game made in HTML5. I tried making a game that was easy to modify and add content for the purpose of letting kids expirement with coding.</p>
+            <br>
+            <a href="https://leo-divine.github.io/Clicker-Project/" target="_blank">Visit Crystal Clicker!</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="splitSection codingProject">
+          <div>
+            <img class="projectImage" src="assets/projects/musicApp.png" alt="Image of Crystal Clicker">
+          </div>
+          <div>
+            <h2>The Bester Music App</h2>
+            <p>An application that I made to really learn C#. It's a simple music player that looks through your music folder and allows you to play music.</p>
+            <br>
+            <a href="https://github.com/leo-divine/TheBesterMusicApp/archive/refs/tags/v1.2.0.3.zip" target="_blank">Download The Application!</a>
+          </div>
+        </div>
+      </div>
+      <br/>
+      <h2>Videos</h2>
+      <div>
+        <div class="splitSection">
+          <div>
+            <video class="projectImage centeredImage" poster="assets/videos/CAD_Poster.png" controlslist="nodownload" controls>
+              <source src="assets/videos/The History Of CAD Video.mp4" type="video/mp4">
+            </video>
+            <div class="centeredText">
+              <h3>History of CAD</h3>
+              <p>A projcet sharing how CAD has developed over the years</p>
+            </div>
+          </div>
+          <div>
+            <video class="projectImage centeredImage" poster="assets/videos/Tennis_Poster.JPEG" controlslist="nodownload" controls>
+              <source src="assets/videos/Tennis Video.mp4" type="video/mp4">
+            </video>
+            <div class="centeredText">
+              <h3>Tennis Montage</h3>
+              <p>A montage created for the Summer Aces camp in Holliston</p>
+            </div>
+          </div>
+        </div>
+        <div class="splitSection">
+          <div>
+            <video class="projectImage centeredImage" poster="assets/videos/Donquavious_Poster.png" controlslist="nodownload" controls>
+              <source src="assets/videos/Condom Project Video.mp4" type="video/mp4">
+            </video>
+            <div class="centeredText">
+              <h3>Donquavious' Condom Palace</h3>
+              <p>A project to teach the importance of proper protection</p>
+            </div>
+          </div>
+          <div>
+            <video class="projectImage centeredImage" poster="assets/videos/TTTC_Poster.png" controlslist="nodownload" controls>
+              <source src="assets/videos/TTTC_YT.mp4" type="video/mp4">
+            </video>
+            <div class="centeredText">
+              <h3>The Things They Carried Analysis</h3>
+              <p>A video analyzing different chapters of the famous book The Things They Carried</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="Awards" class="window">
+    <div class="topBar" onmousedown="startDrag(event, 'Awards')">
+      <h3>Certificate & Awards</h3>
+      <div class="topBarX" onclick="closeWindow('Awards')">(X)</div>
+    </div>
+    <div class="windowPage">
+      <p>It's not a full resume, but I've got plenty of awards and certificates, so I'll list them all here!</p>
+      <br>
+      <h2>Certifications</h2>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>HTML & CSS</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/htmlcssCertificate.png" alt="Image of Certificate">
+          <h4>Certiport Information Technology Specialist in HTML and CSS</h4>
+          <p>May 21st, 2024</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>Javscript</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/javascriptCertificate.png" alt="Image of Certificate">
+          <h4>Certiport Information Technology Specialist in Javascript</h4>
+          <p>Sep 20th, 2024</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>OSHA</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/oshaCertificate.png" alt="Image of Certificate">
+          <h4>OSHA 10-Hour General Industry Course</h4>
+          <p>Feb 28th, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>HTML5 Application Development</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/html5Certificate.png" alt="Image of Certificate">
+          <h4>Certiport Information Technology Specialist in HTML5 Application Development</h4>
+          <p>Apr 5th, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>Java</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/javaCertificate.png" alt="Image of Certificate">
+          <h4>Certiport Information Technology Specialist in Java</h4>
+          <p>Apr 10th, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>Software Development</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/softwaredevelopmentCertificate.png"
+            alt="Image of Certificate">
+          <h4>Certiport Information Technology Specialist in Software Development</h4>
+          <p>May 1st, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>Computational Thinking</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/computationalthinkingCertificate.png"
+            alt="Image of Certificate">
+          <h4>Certiport Information Technology Specialist in Computational Thinking</h4>
+          <p>Jun 11th, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>Python</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/pythonCertificate.png" alt="Image of Certificate">
+          <h4>Certiport Information Technology Specialist in Python</h4>
+          <p>Jun 13th, 2025</p>
+        </div>
+      </div>
+      <br>
+      <h2>Awards</h2>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>Highschool Programming Award [Freshman]</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/schoolFreshmanAward.jpg" alt="Image of Award">
+          <h4>Most Outstanding Freshman Award in Programming & Web</h4>
+          <p>Jun 3rd, 2024</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>MABPA SLC 2025 Web Design Award</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/mabpa2025WebAward.png" alt="Image of Award">
+          <h4>MABPA SLC 2025 Fundamentals of Web Design 1st Place</h4>
+          <p>Mar 9th, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>MABPA SLC 2025 C# Programming Award</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/mabpa2025CSAward.png" alt="Image of Award">
+          <h4>MABPA SLC 2025 C# Programming 2nd Place</h4>
+          <p>Mar 9th, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>BPA NLC 2025 Web Design Award</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <h4>BPA NLC 2025 Fundamentals of Web Design 6th Place</h4>
+          <p>May 10th, 2025</p>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdownTitle">
+          <h2>Highschool Programming Award [Sophomore]</h2>
+          <h2>
+            <i class="fa-solid fa-caret-down"></i>
+          </h2>
+        </div>
+        <input type="checkbox">
+        <div class="dropdownContent">
+          <img class="centeredImage" src="assets/certificates/schoolSophomoreAward.jpg" alt="Image of Award">
+          <h4>Most Outstanding Sophomore Award in Programming & Web</h4>
+          <p>Jun 9th, 2025</p>
+        </div>
+      </div>
+      <p>Here's a full list of everything <a href="https://docs.google.com/document/d/1qtW6VULgxZABnV1BtaJVLdufRSIiBAXmuf3LGnE5yGk/edit?usp=sharing" target="_blank">here</a>!</p>
+    </div>
+  </div>
+  <div id="Contact" class="window">
+    <div class="topBar" onmousedown="startDrag(event, 'Contact')">
+      <h3>Contact</h3>
+      <div class="topBarX" onclick="closeWindow('Contact')">(X)</div>
+    </div>
+    <div class="windowPage">
+      <br>
+      <div class="splitSection">
+        <div>
+          <img id="contactImage" class="centeredImage" src="assets/contactImage.png" alt="An image compelling you to contact me~">
+          <p class="centeredText">plz I'm lonely...</p>
+        </div>
+        <div>
+          <h2 class="centeredText">Feel free to reach out!</h2>
+          <p class="centeredText">There are a few ways to contact me for whatever you may need:</p>
+          <br>
+          <p>Work Phone: <a href="tel:7742311759">774-231-1759</a></p>
+          <p>Main Email: <a href="mailto:isidororossinia@gmail.com">isidororossinia@gmail.com</a></p>
+          <p>School Email: <a href="mailto:aisidororossini2027@jpkeefehs.org">aisidororossini2027@jpkeefehs.org</a></p>
+          <br/>
+          <p>I might put some cool stuff on <a href="https://www.facebook.com/profile.php?id=100091782052102">Facebook</a> if I feel like it ¯\_(ツ)_/¯</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
