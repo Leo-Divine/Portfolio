@@ -17,6 +17,10 @@
   font-family: 'Varela Round';
 }
 
+html {
+  overflow-y: hidden;
+}
+
 body {
   background-image: url("assets/backgroundImage.jpg");
   background-size: cover;
