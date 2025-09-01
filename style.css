@@ -193,7 +193,7 @@ div.dropdown > div.dropdownContent > * {
   text-align: center;
 }
 
-div.dropdown > div.dropdownContent > img, img.projectImage, video.projectImage {
+div.dropdown > div.dropdownContent > img, img.projectImage, iframe.projectImage {
   border-radius: 10px;
   filter: drop-shadow(3px 3px 5px black);
 }
@@ -244,14 +244,13 @@ div.textIcon > div.icon:hover + h3 {
   animation-iteration-count: infinite;
 }
 
-img.projectImage {
+img.projectImage, iframe.projectImage {
   width: 80%;
   margin: 7px;
 }
 
-video.projectImage {
-  width: 80%;
-  margin: 7px;
+iframe.projectImage {
+  aspect-ratio: 16/9;
 }
 
 img.projectImage:hover {
@@ -275,7 +274,7 @@ img.centeredImage {
   display: block;
 }
 
-video.centeredImage {
+iframe.centeredImage {
   margin: 7px auto;
   display: block;
 }
