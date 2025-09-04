@@ -158,9 +158,7 @@ function swapAboutImage() {
   }
 }
 
-const bouncyGuy = document.getElementById('contactImage');
-
-const animation = bouncyGuy.animate(
+const animation = document.getElementById('contactImage').animate(
   [
     { transform: 'scale(1) translateY(0)', offset: 0 },
     { transform: 'scale(1.1, 0.9) translateY(0)', offset: 0.1 },
