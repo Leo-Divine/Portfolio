@@ -161,21 +161,30 @@ function swapAboutImage() {
 const animation = document.getElementById('contactImage').animate(
   [
     { transform: 'scale(1) translateY(0)', offset: 0 },
-    { transform: 'scale(1.1, 0.9) translateY(0)', offset: 0.1 },
-    { transform: 'scale(0.95, 1.05) translateY(-1.15em)', offset: 0.3 },
-    { transform: 'scale(1.1, 0.9) translateY(0.125em)', offset: 0.44 },
-    { transform: 'scale(0.975, 1.025) translateY(-0.65em)', offset: 0.64 },
+    { transform: 'scale(1.1, 0.9) translateY(0)', offset: 0.4 },
     { transform: 'scale(1) translateY(0)', offset: 0.85 },
     { transform: 'scale(1) translateY(0)', offset: 1 }
   ],
   {
-      duration: 1000,
-      iterations: 1
+    duration: 200,
+    iterations: 1
   }
 );
 animation.cancel();
 
+let clickCount = 0;
+let playAnimation = true;
+
 function playBounceAnimation() {
+  if(!playAnimation) { return; }
+
   animation.cancel();
   animation.play();
+  clickCount++;
+  if(clickCount >= 50)
+  {
+    document.getElementById('contactImage').src = "assets/explosion.webp";
+    playAnimation = false;
+    animation.cancel();
+  }
 }

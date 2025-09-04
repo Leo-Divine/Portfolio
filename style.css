@@ -276,9 +276,7 @@ img.projectImage:hover {
   filter: drop-shadow(3px 3px 5px black);
   animation-duration: 1s;
   animation-iteration-count: 1;
-}
-#contactImage:hover {
-  
+  cursor: pointer;
 }
 
 .bouncy {
