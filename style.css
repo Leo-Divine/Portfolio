@@ -274,11 +274,15 @@ img.projectImage:hover {
 #contactImage {
   width: 70%;
   filter: drop-shadow(3px 3px 5px black);
+  animation-duration: 1s;
+  animation-iteration-count: 1;
 }
 #contactImage:hover {
+  
+}
+
+.bouncy {
   animation-name: bouncy;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
 }
 
 img.centeredImage {
