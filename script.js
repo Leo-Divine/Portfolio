@@ -148,9 +148,9 @@ for (const [windowId, windowData] of Object.entries(windows)) {
 }
 
 //Fun Trinkets
-let imageRotation = 3;
+let imageRotation = 2;
 function swapAboutImage() {
-  if(imageRotation >= 3) { 
+  if(imageRotation >= 2) { 
     imageRotation = 0;
     document.getElementById("aboutImageRotation").src = `assets/aboutImageRotate_0.png`;
   } else {
