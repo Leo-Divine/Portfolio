@@ -56,7 +56,7 @@ const windows = {
       x: 50,
       y: 120
     },
-    width: window.innerWidth * 0.35,
+    width: window.innerWidth * 0.5,
     height: window.innerHeight * 0.55,
     isOpen: false,
     isDragging: false,
@@ -80,6 +80,16 @@ const windows = {
     iconColor: "blue"
   }
 };
+
+const awards = [
+  {
+    name: "",
+    category: "",
+    title: "",
+    description: "",
+    image: ""
+  }
+];
 
 //Window Movement
 let currentWindow = null;
@@ -146,6 +156,8 @@ for (const [windowId, windowData] of Object.entries(windows)) {
   `;
   document.getElementById("iconGrid").innerHTML += iconHTML;
 }
+
+//Award Creation
 
 //Fun Trinkets
 let imageRotation = 2;
