@@ -60,6 +60,11 @@ div.splitSection > div:last-child {
 }
 
 /* Windows */
+div.windowContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
 div.window {
   background-color: var(--primary-color);
   position: absolute;
@@ -68,27 +73,27 @@ div.window {
 }
 
 div.window.w-45 {
-  width: 45%;
+  width: 45vw;
 }
 
 div.window.w-50 {
-  width: 50%;
+  width: 50vw;
 }
 
 div.window.w-60 {
-  width: 60%;
+  width: 60vw;
 }
 
 div.window.h-45 {
-  height: 45%;
+  height: 45vh;
 }
 
 div.window.h-55 {
-  height: 55%;
+  height: 55vh;
 }
 
 div.window.h-60 {
-  height: 60%;
+  height: 60vh;
 }
 
 div.topBar {
@@ -180,7 +185,7 @@ div.icon.purple {
 }
 
 /* Dropdown */
-div.dropdown  {
+div.dropdown {
   display: grid;
   background-color: var(--secondary-color);
   grid-template-rows: max-content 0fr;

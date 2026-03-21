@@ -1,0 +1,140 @@
+[
+    {
+        "title": "HTML & CSS",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in HTML and CSS",
+        "date": "May 21st, 2024",
+        "image": "/certificates/htmlcssCertificate.png"
+    },
+    {
+        "title": "JavaScript",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in Javascript",
+        "date": "Sep 20th, 2024",
+        "image": "/certificates/javascriptCertificate.png"
+    },
+    {
+        "title": "HTML5 Application Development",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in HTML5 Application Development",
+        "date": "Apr 5th, 2025",
+        "image": "/certificates/html5Certificate.png"
+    },
+    {
+        "title": "Java",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in Java",
+        "date": "Apr 10th, 2025",
+        "image": "/certificates/javaCertificate.png"
+    },
+    {
+        "title": "Software Development",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in Software Development",
+        "date": "May 1st, 2025",
+        "image": "/certificates/softwaredevelopmentCertificate.png"
+    },
+    {
+        "title": "Computational Thinking",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in Computational Thinking",
+        "date": "Jun 11th, 2025",
+        "image": "/certificates/computationalthinkingCertificate.png"
+    },
+    {
+        "title": "Python",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in Python",
+        "date": "Jun 13th, 2025",
+        "image": "/certificates/pythonCertificate.png"
+    },
+    {
+        "title": "Highschool Programming Award [Freshman]",
+        "category": "Award",
+        "subcategory": "Keefe Tech",
+        "desc": "Most Outstanding Freshman Award in Programming & Web",
+        "date": "Jun 3rd, 2024",
+        "image": "/certificates/schoolFreshmanAward.jpg"
+    },
+    {
+        "title": "BPA SLC 2025 Web Design Award 1st",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA SLC 2025 Fundamentals of Web Design 1st Place",
+        "date": "Mar 9th, 2025",
+        "image": "/certificates/mabpa2025WebAward.png"
+    },
+    {
+        "title": "BPA SLC 2025 C# Programming Award 2nd",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA SLC 2025 C# Programming 2nd Place",
+        "date": "Mar 9th, 2025",
+        "image": "/certificates/mabpa2025CSAward.png"
+    },
+    {
+        "title": "BPA NLC 2025 Web Design Award 6th",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA NLC 2025 Fundamentals of Web Design 6th Place",
+        "date": "May 10th, 2025",
+        "image": ""
+    },
+    {
+        "title": "Highschool Programming Award [Sophomore]",
+        "category": "Award",
+        "subcategory": "Keefe Tech",
+        "desc": "Most Outstanding Sophomore Award in Programming & Web",
+        "date": "Jun 9th, 2025",
+        "image": "/certificates/schoolSophomoreAward.jpg"
+    },
+    {
+        "title": "BPA SLC 2026 Web Design Award 2nd",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA SLC 2026 Fundamentals of Web Design 2nd Place",
+        "date": "Mar 8th, 2026",
+        "image": ""
+    },
+    {
+        "title": "BPA SLC 2026 C# Programming Award 1st",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA SLC 2026 C# Programming 1st Place",
+        "date": "Mar 8th, 2026",
+        "image": ""
+    },
+    {
+        "title": "BPA SLC 2026 Java Programming Award 4th",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA SLC 2026 Java Programming 4th Place",
+        "date": "Mar 8th, 2026",
+        "image": ""
+    },
+    {
+        "title": "BPA SLC 2026 SQL Award 1st",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA SLC 2026 SQL Database Fundamentals 1st Place",
+        "date": "Mar 8th, 2026",
+        "image": ""
+    },
+    {
+        "title": "BPA SLC 2026 Programming Concepts Award 4th",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA SLC 2026 Computer Programming Concepts 4th Place",
+        "date": "Mar 8th, 2026",
+        "image": ""
+    }
+    ,
+    {
+        "title": "SkillsUSA 2026 Disctricts Web Design 1st",
+        "category": "Award",
+        "subcategory": "SKillsUSA",
+        "desc": "SkillsUSA 2026 Disctricts Web Design 1st Place",
+        "date": "Mar 11th, 2026",
+        "image": ""
+    }
+]
