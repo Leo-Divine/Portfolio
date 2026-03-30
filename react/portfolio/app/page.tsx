@@ -1,6 +1,6 @@
 'use client'
 
-import { Dispatch, JSX, MouseEventHandler, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 class Window {
   name: string;
@@ -13,6 +13,7 @@ class Window {
     xPos: number;
     yPos: number;
   };
+  zIndex!: number;
 
   constructor(name: string, startPosition: {left: number; top: number;}, isOpen?: boolean) {
     this.name = name;
@@ -22,6 +23,7 @@ class Window {
       xPos: 0,
       yPos: 0
     };
+    zIndex: 0;
   };
 }
 
@@ -114,23 +116,21 @@ export default function Home(this: any) {
 }
 
 function HomeWindow(this: any, {window, setWindow, setCurrentWindow, globalWindowZIndex, setGlobalWindowZIndex}: {window: Window, setWindow: Dispatch<SetStateAction<Window>>, setCurrentWindow: Dispatch<SetStateAction<string>>, globalWindowZIndex: number, setGlobalWindowZIndex: Dispatch<SetStateAction<number>>}) {
-  const [windowZIndex, setWindowZIndex] = useState(0);
-  
   const onDown = (event: any) => {
     setWindow({
       ...window,
       offset: {
         xPos: event.nativeEvent.offsetX,
         yPos: event.nativeEvent.offsetY
-      }
+      },
+      zIndex: globalWindowZIndex + 1
     });
     setCurrentWindow("Home");
-    setWindowZIndex(globalWindowZIndex + 1);
     setGlobalWindowZIndex(globalWindowZIndex + 1);
   }
   
   return (
-    <div id="Home" className="window w-60 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: windowZIndex, ...window.position}}>
+    <div id="Home" className="window w-60 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
       <div className="topBar" onMouseDown={onDown}>
         <h3>Home</h3>
         <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
@@ -148,7 +148,6 @@ function HomeWindow(this: any, {window, setWindow, setCurrentWindow, globalWindo
 
 function AboutWindow(this: any, {window, setWindow, setCurrentWindow, globalWindowZIndex, setGlobalWindowZIndex}: {window: Window, setWindow: Dispatch<SetStateAction<Window>>, setCurrentWindow: Dispatch<SetStateAction<string>>, globalWindowZIndex: number, setGlobalWindowZIndex: Dispatch<SetStateAction<number>>}) {
   const [imageRotation, setImageRotation] = useState("/aboutImageRotate_2.png");
-  const [windowZIndex, setWindowZIndex] = useState(0);
   
   const onDown = (event: any) => {
     setWindow({
@@ -156,10 +155,10 @@ function AboutWindow(this: any, {window, setWindow, setCurrentWindow, globalWind
       offset: {
         xPos: event.nativeEvent.offsetX,
         yPos: event.nativeEvent.offsetY
-      }
+      },
+      zIndex: globalWindowZIndex + 1
     });
     setCurrentWindow("About");
-    setWindowZIndex(globalWindowZIndex + 1);
     setGlobalWindowZIndex(globalWindowZIndex + 1);
   }
 
@@ -173,7 +172,7 @@ function AboutWindow(this: any, {window, setWindow, setCurrentWindow, globalWind
   }
 
   return (
-    <div id="About" className="window w-45 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: windowZIndex, ...window.position}}>
+    <div id="About" className="window w-45 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
       <div className="topBar" onMouseDown={onDown}>
         <h3>About</h3>
         <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
@@ -237,23 +236,21 @@ function AboutWindow(this: any, {window, setWindow, setCurrentWindow, globalWind
 }
 
 function ProjectsWindow(this: any, {window, setWindow, setCurrentWindow, globalWindowZIndex, setGlobalWindowZIndex}: {window: Window, setWindow: Dispatch<SetStateAction<Window>>, setCurrentWindow: Dispatch<SetStateAction<string>>, globalWindowZIndex: number, setGlobalWindowZIndex: Dispatch<SetStateAction<number>>}) {
-  const [windowZIndex, setWindowZIndex] = useState(0);
-  
   const onDown = (event: any) => {
     setWindow({
       ...window,
       offset: {
         xPos: event.nativeEvent.offsetX,
         yPos: event.nativeEvent.offsetY
-      }
+      },
+      zIndex: globalWindowZIndex + 1
     });
     setCurrentWindow("Projects");
-    setWindowZIndex(globalWindowZIndex + 1);
     setGlobalWindowZIndex(globalWindowZIndex + 1);
   }
   
   return (
-    <div id="Projects" className="window w-50 h-55" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: windowZIndex, ...window.position}}>
+    <div id="Projects" className="window w-50 h-55" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
     <div className="topBar" onMouseDown={onDown}>
       <h3>Projects</h3>
       <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
@@ -343,7 +340,6 @@ function ProjectsWindow(this: any, {window, setWindow, setCurrentWindow, globalW
 }
 
 function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWindowZIndex, setGlobalWindowZIndex}: {window: Window, setWindow: Dispatch<SetStateAction<Window>>, setCurrentWindow: Dispatch<SetStateAction<string>>, globalWindowZIndex: number, setGlobalWindowZIndex: Dispatch<SetStateAction<number>>}) {
-  const [windowZIndex, setWindowZIndex] = useState(0);
   const [elements, setElements] = useState({ Certificates: [<></>], Awards: { BPA: [<></>], Skills: [<></>], Keefe: [<></>] } });
   const [currentElement, setCurrentElement] = useState([<p>Loading...</p>]); 
   
@@ -353,10 +349,10 @@ function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWin
       offset: {
         xPos: event.nativeEvent.offsetX,
         yPos: event.nativeEvent.offsetY
-      }
+      },
+      zIndex: globalWindowZIndex + 1
     });
     setCurrentWindow("Awards");
-    setWindowZIndex(globalWindowZIndex + 1);
     setGlobalWindowZIndex(globalWindowZIndex + 1);
   }
 
@@ -396,7 +392,10 @@ function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWin
         }
 
         setElements(tempElements);
-        setCurrentElement(tempElements.Certificates);
+        setCurrentElement([
+        <h1 className="centeredText">Certificates</h1>,
+        <div>{tempElements.Certificates}</div>
+      ]);
       }
     };
     fetchData();
@@ -404,9 +403,13 @@ function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWin
 
   const setAwards = (category: string) => {
     if(category == "Certificate") {
-      setCurrentElement(elements.Certificates);
+      setCurrentElement([
+        <h1 className="centeredText">Certificates</h1>,
+        <div>{elements.Certificates}</div>
+      ]);
     } else {
       setCurrentElement([
+        <h1 className="centeredText">Awards</h1>,
         <h2>BPA</h2>,
         <div>{elements.Awards.BPA}</div>,
         <h2>SkillsUSA</h2>,
@@ -418,15 +421,15 @@ function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWin
   };
   
   return (
-    <div id="Awards" className="window w-45 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: windowZIndex, ...window.position}}>
+    <div id="Awards" className="window w-45 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
       <div className="topBar" onMouseDown={onDown}>
         <h3>Awards</h3>
         <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
       </div>
       <div className="windowPage">
-        <div>
-          <span onClick={setAwards.bind(this, "Certificate")}>Certificates</span>
-          <span onClick={setAwards.bind(this, "Award")}>Awards</span>
+        <div className="awardNav">
+          <h3 onClick={setAwards.bind(this, "Certificate")}>Certificates</h3>
+          <h3 onClick={setAwards.bind(this, "Award")}>Awards</h3>
         </div>
         <div>{currentElement}</div>
       </div>

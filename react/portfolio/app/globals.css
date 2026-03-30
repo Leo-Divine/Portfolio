@@ -134,6 +134,23 @@ div.windowPage {
   scrollbar-width: none;
 }
 
+div.awardNav {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.awardNav > h3 {
+  display: inline-block;
+  margin: 5px 15px 10px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.awardNav > h3:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
 /* Icons */
 div#iconGrid {
   width: 100vw;
