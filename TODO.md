@@ -1,9 +1,0 @@
-- [x] get icons
-- [x] make contact window
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
