@@ -35,16 +35,23 @@ class Window {
 }
 
 export default function Home(this: any) {
-  const [homeWindow, setHomeWindow] = useState(new Window("Home", {
-    left: globalThis.window.innerWidth < 768 ? 0 : globalThis.window.innerWidth / 2 - globalThis.window.innerWidth * 0.6 / 2, 
-    top: globalThis.window.innerWidth < 768 ? 0 : globalThis.window.innerHeight / 2 - globalThis.window.innerHeight * 0.6 / 2
-  }, {width: 60, height: 60}, true));
+  const [homeWindow, setHomeWindow] = useState(new Window("Home", {left: 50, top: 120}, {width: 60, height: 60}, true));
   const [aboutWindow, setAboutWindow] = useState(new Window("About", {left: 50, top: 120}, {width: 45, height: 60}));
   const [projectsWindow, setProjectsWindow] = useState(new Window("Projects", {left: 50, top: 120}, {width: 50, height: 55}));
   const [awardsWindow, setAwardsWindow] = useState(new Window("Awards", {left: 50, top: 120}, {width: 45, height: 60}));
   const [contactWindow, setContactWindow] = useState(new Window("Contact", {left: 50, top: 120}, {width: 45, height: 55}));
   const [currentWindow, setCurrentWindow] = useState("");
   const [windowZIndex, setWindowZIndex] = useState(0);
+
+  useEffect(() => {
+    setHomeWindow({
+      ...homeWindow,
+      position: {
+        left: globalThis.window.innerWidth < 768 ? 0 : globalThis.window.innerWidth / 2 - globalThis.window.innerWidth * 0.6 / 2, 
+        top: globalThis.window.innerWidth < 768 ? 0 : globalThis.window.innerHeight / 2 - globalThis.window.innerHeight * 0.6 / 2
+      }
+    });
+  }, []);
 
   const getWindow = (name: string) => {
     switch(name) {
@@ -69,6 +76,7 @@ export default function Home(this: any) {
   };
 
   const onIconClick = (windowName: string) => {
+    useEffect(() => {
     const window = getWindow(windowName);
     const setWindow = getSetWindow(windowName);
     if(window == null || setWindow == null) { return; }
@@ -87,9 +95,11 @@ export default function Home(this: any) {
       ...window,
       isOpen: true
     });
+    }, []);
   };
 
   const onMove = (event: any) => {
+    useEffect(() => {
     const window = getWindow(currentWindow);
     const setWindow = getSetWindow(currentWindow);
     if(window == null || setWindow == null) { return; }
@@ -100,6 +110,7 @@ export default function Home(this: any) {
         top: Math.max(Math.min(event.clientY - window.offset.yPos, globalThis.window.innerHeight - globalThis.window.innerHeight * (window.size.height / 100)), 0)
       }
     });
+    }, []);
   };
 
   const onUp = (event: any) => {
@@ -520,6 +531,7 @@ function ContactWindow(this: any, {window, setWindow, setCurrentWindow, globalWi
 }
 
 function onXClick(window: Window, setWindow: Dispatch<SetStateAction<Window>>): undefined {
+  useEffect(() => {
   if(globalThis.window.innerWidth < 768) {
     setWindow({
       ...window,
@@ -535,4 +547,5 @@ function onXClick(window: Window, setWindow: Dispatch<SetStateAction<Window>>): 
     ...window,
     isOpen: false
   });
+  }, []);
 }
