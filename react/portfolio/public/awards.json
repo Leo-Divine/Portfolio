@@ -94,7 +94,7 @@
         "subcategory": "Business Professionals of America",
         "desc": "BPA SLC 2026 Fundamentals of Web Design 2nd Place",
         "date": "Mar 8th, 2026",
-        "image": ""
+        "image": "/certificates/mabpa2026WebAward.jpg"
     },
     {
         "title": "BPA SLC 2026 C# Programming Award 1st",
@@ -102,7 +102,7 @@
         "subcategory": "Business Professionals of America",
         "desc": "BPA SLC 2026 C# Programming 1st Place",
         "date": "Mar 8th, 2026",
-        "image": ""
+        "image": "/certificates/mabpa2026CSAward.png"
     },
     {
         "title": "BPA SLC 2026 Java Programming Award 4th",
@@ -110,7 +110,7 @@
         "subcategory": "Business Professionals of America",
         "desc": "BPA SLC 2026 Java Programming 4th Place",
         "date": "Mar 8th, 2026",
-        "image": ""
+        "image": "/certificates/mabpa2026JavaAward.jpg"
     },
     {
         "title": "BPA SLC 2026 SQL Award 1st",
@@ -118,7 +118,7 @@
         "subcategory": "Business Professionals of America",
         "desc": "BPA SLC 2026 SQL Database Fundamentals 1st Place",
         "date": "Mar 8th, 2026",
-        "image": ""
+        "image": "/certificates/mabpa2026SQLAward.jpg"
     },
     {
         "title": "BPA SLC 2026 Programming Concepts Award 4th",
@@ -126,7 +126,7 @@
         "subcategory": "Business Professionals of America",
         "desc": "BPA SLC 2026 Computer Programming Concepts 4th Place",
         "date": "Mar 8th, 2026",
-        "image": ""
+        "image": "/certificates/mabpa2026ConceptsAward.jpg"
     }
     ,
     {
@@ -135,6 +135,6 @@
         "subcategory": "SKillsUSA",
         "desc": "SkillsUSA 2026 Disctricts Web Design 1st Place",
         "date": "Mar 11th, 2026",
-        "image": ""
+        "image": "/certificates/skillsDist2026WebAward.jpg"
     }
 ]

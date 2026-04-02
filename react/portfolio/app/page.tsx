@@ -1,6 +1,8 @@
 'use client'
 
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faUser, faMedal, faPaintBrush, faPhone, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 class Window {
   name: string;
@@ -13,9 +15,13 @@ class Window {
     xPos: number;
     yPos: number;
   };
-  zIndex!: number;
+  zIndex: number;
+  size: {
+    width: number;
+    height: number;
+  };
 
-  constructor(name: string, startPosition: {left: number; top: number;}, isOpen?: boolean) {
+  constructor(name: string, startPosition: {left: number; top: number;}, size: {width: number; height: number;}, isOpen?: boolean) {
     this.name = name;
     this.isOpen = isOpen !== undefined ? isOpen : false;
     this.position = startPosition;
@@ -23,19 +29,20 @@ class Window {
       xPos: 0,
       yPos: 0
     };
-    zIndex: 0;
+    this.zIndex = 0;
+    this.size = size;
   };
 }
 
 export default function Home(this: any) {
   const [homeWindow, setHomeWindow] = useState(new Window("Home", {
-    left: window.innerWidth / 2 - window.innerWidth * 0.6 / 2, 
-    top: window.innerHeight / 2 - window.innerHeight * 0.6 / 2
-  }, true));
-  const [aboutWindow, setAboutWindow] = useState(new Window("About", {left: 50, top: 120}));
-  const [projectsWindow, setProjectsWindow] = useState(new Window("Projects", {left: 50, top: 120}));
-  const [awardsWindow, setAwardsWindow] = useState(new Window("Awards", {left: 50, top: 120}));
-  const [contactWindow, setContactWindow] = useState(new Window("Contact", {left: 50, top: 120}));
+    left: globalThis.window.innerWidth < 768 ? 0 : globalThis.window.innerWidth / 2 - globalThis.window.innerWidth * 0.6 / 2, 
+    top: globalThis.window.innerWidth < 768 ? 0 : globalThis.window.innerHeight / 2 - globalThis.window.innerHeight * 0.6 / 2
+  }, {width: 60, height: 60}, true));
+  const [aboutWindow, setAboutWindow] = useState(new Window("About", {left: 50, top: 120}, {width: 45, height: 60}));
+  const [projectsWindow, setProjectsWindow] = useState(new Window("Projects", {left: 50, top: 120}, {width: 50, height: 55}));
+  const [awardsWindow, setAwardsWindow] = useState(new Window("Awards", {left: 50, top: 120}, {width: 45, height: 60}));
+  const [contactWindow, setContactWindow] = useState(new Window("Contact", {left: 50, top: 120}, {width: 45, height: 55}));
   const [currentWindow, setCurrentWindow] = useState("");
   const [windowZIndex, setWindowZIndex] = useState(0);
 
@@ -65,6 +72,17 @@ export default function Home(this: any) {
     const window = getWindow(windowName);
     const setWindow = getSetWindow(windowName);
     if(window == null || setWindow == null) { return; }
+    if(globalThis.window.innerWidth < 768) {
+      setWindow({
+        ...window,
+        isOpen: true,
+        position: {
+          left: 0,
+          top: 0
+        }
+      });
+      return;
+    }
     setWindow({
       ...window,
       isOpen: true
@@ -78,8 +96,8 @@ export default function Home(this: any) {
     setWindow({
       ...window,
       position: {
-        left: event.clientX - window.offset.xPos,
-        top: event.clientY - window.offset.yPos
+        left: Math.max(Math.min(event.clientX - window.offset.xPos, globalThis.window.innerWidth - globalThis.window.innerWidth * (window.size.width / 100)), 0),
+        top: Math.max(Math.min(event.clientY - window.offset.yPos, globalThis.window.innerHeight - globalThis.window.innerHeight * (window.size.height / 100)), 0)
       }
     });
   };
@@ -92,25 +110,26 @@ export default function Home(this: any) {
     <div className="windowContainer" onMouseMove={onMove} onMouseUp={onUp}>
       <div id="iconGrid">
         <div className="icon red" onClick={onIconClick.bind(this, "Home")}>
-          <i className="fa-solid fa-house"></i>
+          <FontAwesomeIcon icon={faHouse} />
         </div>
         <div className="icon blue" onClick={onIconClick.bind(this, "About")}>
-          <i className="fa-solid fa-user"></i>
+          <FontAwesomeIcon icon={faUser} />
         </div>
         <div className="icon green" onClick={onIconClick.bind(this, "Projects")}>
-          <i className="fa-solid fa-paintbrush"></i>
+          <FontAwesomeIcon icon={faPaintBrush} />
         </div>
         <div className="icon purple" onClick={onIconClick.bind(this, "Awards")}>
-          <i className="fa-solid fa-medal"></i>
+          <FontAwesomeIcon icon={faMedal} />
         </div>
         <div className="icon blue" onClick={onIconClick.bind(this, "Contact")}>
-          <i className="fa-solid fa-phone"></i>
+          <FontAwesomeIcon icon={faPhone} />
         </div>
       </div>
       <HomeWindow window={homeWindow} setWindow={setHomeWindow} setCurrentWindow={setCurrentWindow} globalWindowZIndex={windowZIndex} setGlobalWindowZIndex={setWindowZIndex}/>
       <AboutWindow window={aboutWindow} setWindow={setAboutWindow} setCurrentWindow={setCurrentWindow} globalWindowZIndex={windowZIndex} setGlobalWindowZIndex={setWindowZIndex}/>
       <ProjectsWindow window={projectsWindow} setWindow={setProjectsWindow} setCurrentWindow={setCurrentWindow} globalWindowZIndex={windowZIndex} setGlobalWindowZIndex={setWindowZIndex}/>
       <AwardsWindow window={awardsWindow} setWindow={setAwardsWindow} setCurrentWindow={setCurrentWindow} globalWindowZIndex={windowZIndex} setGlobalWindowZIndex={setWindowZIndex}/>
+      <ContactWindow window={contactWindow} setWindow={setContactWindow} setCurrentWindow={setCurrentWindow} globalWindowZIndex={windowZIndex} setGlobalWindowZIndex={setWindowZIndex}/>
     </div>
   );
 }
@@ -130,7 +149,7 @@ function HomeWindow(this: any, {window, setWindow, setCurrentWindow, globalWindo
   }
   
   return (
-    <div id="Home" className="window w-60 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
+    <div id="Home" className={`window w-${window.size.width} h-${window.size.height}`} style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
       <div className="topBar" onMouseDown={onDown}>
         <h3>Home</h3>
         <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
@@ -172,7 +191,7 @@ function AboutWindow(this: any, {window, setWindow, setCurrentWindow, globalWind
   }
 
   return (
-    <div id="About" className="window w-45 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
+    <div id="About" className={`window w-${window.size.width} h-${window.size.height}`} style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
       <div className="topBar" onMouseDown={onDown}>
         <h3>About</h3>
         <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
@@ -250,7 +269,7 @@ function ProjectsWindow(this: any, {window, setWindow, setCurrentWindow, globalW
   }
   
   return (
-    <div id="Projects" className="window w-50 h-55" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
+    <div id="Projects" className={`window w-${window.size.width} h-${window.size.height}`} style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
     <div className="topBar" onMouseDown={onDown}>
       <h3>Projects</h3>
       <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
@@ -369,7 +388,7 @@ function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWin
             <div className="dropdownTitle">
               <h2>{award.title}</h2>
               <h2>
-                <i className="fa-solid fa-caret-down"></i>
+                <FontAwesomeIcon icon={faCaretDown} />
               </h2>
             </div>
             <input type="checkbox"/>
@@ -421,7 +440,7 @@ function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWin
   };
   
   return (
-    <div id="Awards" className="window w-45 h-60" style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
+    <div id="Awards" className={`window w-${window.size.width} h-${window.size.height}`} style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
       <div className="topBar" onMouseDown={onDown}>
         <h3>Awards</h3>
         <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
@@ -437,7 +456,81 @@ function AwardsWindow(this: any, {window, setWindow, setCurrentWindow, globalWin
   );
 }
 
+function ContactWindow(this: any, {window, setWindow, setCurrentWindow, globalWindowZIndex, setGlobalWindowZIndex}: {window: Window, setWindow: Dispatch<SetStateAction<Window>>, setCurrentWindow: Dispatch<SetStateAction<string>>, globalWindowZIndex: number, setGlobalWindowZIndex: Dispatch<SetStateAction<number>>}) {
+  const [image, setImage] = useState("/contactImage.png");
+  const [imageClickCount, setImageClickCount] = useState(0);
+  const [playAnimation, setPlayAnimation] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  const onDown = (event: any) => {
+    setWindow({
+      ...window,
+      offset: {
+        xPos: event.nativeEvent.offsetX,
+        yPos: event.nativeEvent.offsetY
+      },
+      zIndex: globalWindowZIndex + 1
+    });
+    setCurrentWindow("Contact");
+    setGlobalWindowZIndex(globalWindowZIndex + 1);
+  }
+
+  const onImageClick = () => {
+    if(!playAnimation) { return; }
+    setIsAnimating(false);
+    setTimeout(() => setIsAnimating(true), 10);
+
+    setImageClickCount(imageClickCount + 1);
+    if(imageClickCount + 1 >= 50)
+    {
+      setImage("/explosion.webp");
+      setPlayAnimation(false);
+    }
+  };
+
+  const onBounceEnd = () => {
+    setIsAnimating(false);
+  }
+
+  return (
+    <div id="Contact" className={`window w-${window.size.width} h-${window.size.height}`} style={{visibility: window.isOpen? "visible" : "hidden", zIndex: window.zIndex, ...window.position}}>
+      <div className="topBar" onMouseDown={onDown}>
+        <h3>Contact</h3>
+        <div className="topBarX" onClick={onXClick.bind(this, window, setWindow)}>(X)</div>
+      </div>
+      <div className="windowPage">
+        <br/>
+        <div className="splitSection">
+          <div>
+            <img id="contactImage" className={`centeredImage ${isAnimating ? 'contactImageAnimate' : ''}`} src={image} alt="An image compelling you to contact me~" onClick={onImageClick} onAnimationEnd={onBounceEnd}/>
+            <p className="centeredText">please, I'm lonely...</p>
+          </div>
+          <div>
+            <h2 className="centeredText">Feel free to reach out!</h2>
+            <p className="centeredText">There are a few ways to contact me for whatever you may need:</p>
+            <br/>
+            <p>Work Phone: <a href="tel:7742311759">774-231-1759</a></p>
+            <p>Main Email: <a href="mailto:isidororossinia@gmail.com">isidororossinia@gmail.com</a></p>
+            <p>School Email: <a href="mailto:aisidororossini2027@jpkeefehs.org">aisidororossini2027@jpkeefehs.org</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function onXClick(window: Window, setWindow: Dispatch<SetStateAction<Window>>): undefined {
+  if(globalThis.window.innerWidth < 768) {
+    setWindow({
+      ...window,
+      isOpen: false,
+      position: {
+        left: 0,
+        top: 0
+      }
+    });
+    return;
+  }
   setWindow({
     ...window,
     isOpen: false
