@@ -127,8 +127,7 @@
         "desc": "BPA SLC 2026 Computer Programming Concepts 4th Place",
         "date": "Mar 8th, 2026",
         "image": "/certificates/mabpa2026ConceptsAward.jpg"
-    }
-    ,
+    },
     {
         "title": "SkillsUSA 2026 Disctricts Web Design 1st",
         "category": "Award",
@@ -136,5 +135,52 @@
         "desc": "SkillsUSA 2026 Disctricts Web Design 1st Place",
         "date": "Mar 11th, 2026",
         "image": "/certificates/skillsDist2026WebAward.jpg"
+    },
+    {
+        "title": "SkillsUSA 2026 States Web Design 1st",
+        "category": "Award",
+        "subcategory": "SKillsUSA",
+        "desc": "SkillsUSA 2026 States Web Design 1st Place",
+        "date": "May 2nd, 2026",
+        "image": ""
+    },
+    {
+        "title": "Databases",
+        "category": "Certificate",
+        "desc": "Certiport Information Technology Specialist in Databases",
+        "date": "May 8th, 2026",
+        "image": "/certificates/databasesCertificate.png"
+    },
+    {
+        "title": "BPA NLC 2026 Web Design Award 8th",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA NLC 2026 Fundamentals of Web Design 8th Place",
+        "date": "May 9th, 2025",
+        "image": ""
+    },
+    {
+        "title": "BPA NLC 2026 SQL Award 2nd",
+        "category": "Award",
+        "subcategory": "Business Professionals of America",
+        "desc": "BPA NLC 2026 SQL Database Fundamentals 2nd Place",
+        "date": "May 9th, 2025",
+        "image": ""
+    },
+    {
+        "title": "SkillsUSA 2026 NSLC Web Design 4th",
+        "category": "Award",
+        "subcategory": "SKillsUSA",
+        "desc": "SkillsUSA 2026 Nationals Web Design 4th Place",
+        "date": "Jun 5th, 2026",
+        "image": ""
+    },
+    {
+        "title": "Highschool Programming Award [Junior]",
+        "category": "Award",
+        "subcategory": "Keefe Tech",
+        "desc": "Most Outstanding Junior Award in Programming & Web",
+        "date": "Jun 10th, 2026",
+        "image": ""
     }
 ]

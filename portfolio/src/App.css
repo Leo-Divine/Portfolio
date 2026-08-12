@@ -1,17 +1,3 @@
-:root {
-  --window-border-radius: 15px;
-  --window-border-width: 5px;
-  --window-bar-height: 45px;
-
-  --icon-size: 40px;
-
-  --primary-color: #c5ddf0;
-  --primary-color-highlight: #95b2c9;
-  --secondary-color: #98d4ff;
-  --tertiary-color: #44b4fa;
-  --tertiary-color-highlight: #3399d8; 
-}
-
 * {
   margin: 0;
   font-family: 'Varela Round';

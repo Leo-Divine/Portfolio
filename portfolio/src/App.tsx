@@ -1,8 +1,7 @@
-'use client'
-
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faUser, faMedal, faPaintBrush, faPhone, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import "./App.css";
 
 class Window {
   name: string;
@@ -34,7 +33,7 @@ class Window {
   };
 }
 
-export default function Home(this: any) {
+export default function App(this: any) {
   const [homeWindow, setHomeWindow] = useState(new Window("Home", {left: 50, top: 120}, {width: 60, height: 60}, true));
   const [aboutWindow, setAboutWindow] = useState(new Window("About", {left: 50, top: 120}, {width: 45, height: 60}));
   const [projectsWindow, setProjectsWindow] = useState(new Window("Projects", {left: 50, top: 120}, {width: 50, height: 55}));
@@ -75,8 +74,7 @@ export default function Home(this: any) {
     }
   };
 
-  const onIconClick = (windowName: string) => {
-    useEffect(() => {
+  const onIconClick = (windowName: string, globalWindowZIndex: number, setGlobalWindowZIndex: Dispatch<SetStateAction<number>>) => {
     const window = getWindow(windowName);
     const setWindow = getSetWindow(windowName);
     if(window == null || setWindow == null) { return; }
@@ -93,13 +91,13 @@ export default function Home(this: any) {
     }
     setWindow({
       ...window,
-      isOpen: true
+      isOpen: true,
+      zIndex: globalWindowZIndex + 1
     });
-    }, []);
+    setGlobalWindowZIndex(globalWindowZIndex + 1);
   };
 
   const onMove = (event: any) => {
-    useEffect(() => {
     const window = getWindow(currentWindow);
     const setWindow = getSetWindow(currentWindow);
     if(window == null || setWindow == null) { return; }
@@ -110,7 +108,6 @@ export default function Home(this: any) {
         top: Math.max(Math.min(event.clientY - window.offset.yPos, globalThis.window.innerHeight - globalThis.window.innerHeight * (window.size.height / 100)), 0)
       }
     });
-    }, []);
   };
 
   const onUp = (event: any) => {
@@ -120,19 +117,19 @@ export default function Home(this: any) {
   return (
     <div className="windowContainer" onMouseMove={onMove} onMouseUp={onUp}>
       <div id="iconGrid">
-        <div className="icon red" onClick={onIconClick.bind(this, "Home")}>
+        <div className="icon red" onClick={onIconClick.bind(this, "Home", windowZIndex, setWindowZIndex)}>
           <FontAwesomeIcon icon={faHouse} />
         </div>
-        <div className="icon blue" onClick={onIconClick.bind(this, "About")}>
+        <div className="icon blue" onClick={onIconClick.bind(this, "About", windowZIndex, setWindowZIndex)}>
           <FontAwesomeIcon icon={faUser} />
         </div>
-        <div className="icon green" onClick={onIconClick.bind(this, "Projects")}>
+        <div className="icon green" onClick={onIconClick.bind(this, "Projects", windowZIndex, setWindowZIndex)}>
           <FontAwesomeIcon icon={faPaintBrush} />
         </div>
-        <div className="icon purple" onClick={onIconClick.bind(this, "Awards")}>
+        <div className="icon purple" onClick={onIconClick.bind(this, "Awards", windowZIndex, setWindowZIndex)}>
           <FontAwesomeIcon icon={faMedal} />
         </div>
-        <div className="icon blue" onClick={onIconClick.bind(this, "Contact")}>
+        <div className="icon blue" onClick={onIconClick.bind(this, "Contact", windowZIndex, setWindowZIndex)}>
           <FontAwesomeIcon icon={faPhone} />
         </div>
       </div>
@@ -241,7 +238,7 @@ function AboutWindow(this: any, {window, setWindow, setCurrentWindow, globalWind
           </div>
           <div className="splitSection centeredText">
             <div>
-              <img className="projectImage" src="/hobbies/events.jpg"/>
+              <img className="projectImage" src="/hobbies/events.JPG"/>
               <h3>Do fun events and competitions</h3>
             </div>
             <div>
@@ -360,6 +357,22 @@ function ProjectsWindow(this: any, {window, setWindow, setCurrentWindow, globalW
             <div className="centeredText">
               <h3>The Things They Carried Analysis</h3>
               <p>A video analyzing different chapters of the famous book The Things They Carried</p>
+            </div>
+          </div>
+        </div>
+        <div className="splitSection">
+          <div>
+            <iframe className="projectImage centeredImage" src="https://www.youtube.com/embed/AxGtI5pFBYI?si=zZcnPi0zvHI29xiJ&amp;controls=0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <div className="centeredText">
+              <h3>How Does a Refrigerator Work?</h3>
+              <p>A project to teach you how a fridge works</p>
+            </div>
+          </div>
+          <div>
+            <iframe className="projectImage centeredImage" src="https://www.youtube.com/embed/v5Vv4R_I59w?si=Yd9yUuBIMxB_drK7&amp;controls=0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <div className="centeredText">
+              <h3>The Computer Office</h3>
+              <p>The best ripoff of The Office that teaches you about programming languages!</p>
             </div>
           </div>
         </div>
@@ -531,7 +544,6 @@ function ContactWindow(this: any, {window, setWindow, setCurrentWindow, globalWi
 }
 
 function onXClick(window: Window, setWindow: Dispatch<SetStateAction<Window>>): undefined {
-  useEffect(() => {
   if(globalThis.window.innerWidth < 768) {
     setWindow({
       ...window,
@@ -547,5 +559,4 @@ function onXClick(window: Window, setWindow: Dispatch<SetStateAction<Window>>): 
     ...window,
     isOpen: false
   });
-  }, []);
 }
