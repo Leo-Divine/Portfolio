@@ -110,7 +110,7 @@ export default function App(this: any) {
     });
   };
 
-  const onUp = (event: any) => {
+  const onUp = () => {
     setCurrentWindow("");
   };
 
