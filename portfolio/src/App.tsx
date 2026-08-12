@@ -238,7 +238,7 @@ function AboutWindow(this: any, {window, setWindow, setCurrentWindow, globalWind
           </div>
           <div className="splitSection centeredText">
             <div>
-              <img className="projectImage" src="/hobbies/events.JPG"/>
+              <img className="projectImage" src="/hobbies/events.jpg"/>
               <h3>Do fun events and competitions</h3>
             </div>
             <div>
